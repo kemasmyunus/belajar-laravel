@@ -64,3 +64,44 @@ Jalankan server:
 php artisan serve
 ```
 Akses `http://127.0.0.1:8000/hello` di browser untuk melihat hasilnya.
+
+## 5. Controller dan View
+### a. Membuat Controller
+Untuk membuat controller, jalankan perintah:
+```sh
+php artisan make:controller HelloController
+```
+
+### b. Definisi Method di Controller
+Edit `app/Http/Controllers/HelloController.php`:
+```php
+namespace App\Http\Controllers;
+use Illuminate\Http\Request;
+
+class HelloController extends Controller {
+    public function index() {
+        return view('hello');
+    }
+}
+```
+
+### c. Routing Controller
+Tambahkan route di `routes/web.php`:
+```php
+use App\Http\Controllers\HelloController;
+Route::get('/hello', [HelloController::class, 'index']);
+```
+
+### d. Membuat View
+Buat file `resources/views/hello.blade.php`:
+```html
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Hello Laravel</title>
+</head>
+<body>
+    <h1>Selamat datang di Laravel!</h1>
+</body>
+</html>
+```
