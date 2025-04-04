@@ -51,3 +51,16 @@ Berikut adalah struktur utama direktori Laravel:
 - **routes/** → Berisi definisi routing aplikasi
 - **storage/** → Berisi log, cache, dan file sementara
 - **tests/** → Direktori untuk pengujian aplikasi
+
+## 4. Routing Dasar
+Routing di Laravel diatur dalam file `routes/web.php`. Tambahkan route berikut:
+```php
+Route::get('/hello', function () {
+    return 'Hello, Laravel!';
+});
+```
+Jalankan server:
+```sh
+php artisan serve
+```
+Akses `http://127.0.0.1:8000/hello` di browser untuk melihat hasilnya.
