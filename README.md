@@ -39,3 +39,15 @@ Jalankan server pengembangan Laravel:
 php artisan serve
 ```
 Buka browser dan akses `http://127.0.0.1:8000/` untuk melihat tampilan default Laravel.
+
+## 3. Struktur Direktori Laravel
+Berikut adalah struktur utama direktori Laravel:
+- **app/** → Berisi logika aplikasi (Models, Controllers, Middleware, dll.)
+- **bootstrap/** → Berisi file bootstrapping untuk inisialisasi aplikasi
+- **config/** → Berisi file konfigurasi aplikasi
+- **database/** → Berisi file migrasi dan seeder database
+- **public/** → Direktori publik untuk file statis dan entry point aplikasi (`index.php`)
+- **resources/** → Berisi file view (Blade template), CSS, dan JavaScript
+- **routes/** → Berisi definisi routing aplikasi
+- **storage/** → Berisi log, cache, dan file sementara
+- **tests/** → Direktori untuk pengujian aplikasi
