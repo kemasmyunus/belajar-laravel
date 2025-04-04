@@ -105,3 +105,70 @@ Buat file `resources/views/hello.blade.php`:
 </body>
 </html>
 ```
+
+## 6. Database dan Eloquent ORM
+### a. Konfigurasi Database
+Edit file `.env` untuk mengatur koneksi database:
+```
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=nama_database
+DB_USERNAME=root
+DB_PASSWORD=
+```
+
+### b. Membuat Model dan Migrasi
+Buat model dengan migrasi:
+```sh
+php artisan make:model Post -m
+```
+
+Edit file migrasi di `database/migrations/`:
+```php
+public function up() {
+    Schema::create('posts', function (Blueprint $table) {
+        $table->id();
+        $table->string('title');
+        $table->text('content');
+        $table->timestamps();
+    });
+}
+```
+Jalankan migrasi:
+```sh
+php artisan migrate
+```
+
+### c. Menggunakan Model
+Edit `app/Models/Post.php`:
+```php
+namespace App\Models;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+
+class Post extends Model {
+    use HasFactory;
+    protected $fillable = ['title', 'content'];
+}
+```
+
+### d. Menampilkan Data di Controller
+Edit `HelloController.php`:
+```php
+use App\Models\Post;
+
+public function index() {
+    $posts = Post::all();
+    return view('hello', compact('posts'));
+}
+```
+
+Edit `resources/views/hello.blade.php` untuk menampilkan data:
+```html
+@foreach($posts as $post)
+    <h2>{{ $post->title }}</h2>
+    <p>{{ $post->content }}</p>
+@endforeach
+```
+
